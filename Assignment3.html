@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Assignment 3</title>
+    </head>
+    <body>
+        <div id="assignment3"></div>
+        <script>
+
+            const inventory = new Object();
+
+            let con = 0;
+
+            let condition = true;
+
+            function addProduct(id, name, price, quantity) {
+                
+                const product = new Object();
+                product.id = id;
+                product.name = name;
+                product.price = price;
+                product.quantity = quantity;
+                alert("Product ID: " + id + "\n" + "Product Name: " + name + "\n" + "Product Price: " + price + "\n" + "Product Quantitys: " + quantity + "\n");
+                inventory[con] = product;
+                con++;
+        
+            }
+
+            function displayProduct() {
+
+                for (let i in inventory) {
+                console.log("Product ID: " + inventory[i].id + "\n" + "Product Name: " + inventory[i].name + "\n" + "Product Price: " + inventory[i].price + "\n" + "Product Quantitys: " + inventory[i].quantity + "\n");
+            
+                }
+            }
+
+            function calculateTotalValue() {
+
+                let sum = 0;
+                let counter = 0;
+                for (let i in inventory) {
+                    counter = inventory[i].price * inventory[i].quantity;
+                    sum += counter;
+                }
+                console.log(sum);
+            }
+
+            function removeProduct() {
+                
+                let id = prompt("Enter the product ID you want to delete:");
+                    
+                    for (let i in inventory) {
+                        if (inventory[i].id == id) {
+                            delete inventory[i];
+                            console.log("Product has been deleted.");
+                            return;
+                        }             
+                    } 
+                    
+                    console.log("No such product.");     
+            }
+
+            addProduct(1,"Gun",20,50);
+            addProduct(2,"GunPlus",50,80);
+            addProduct(3,"SuperGun",70,90);
+            addProduct(4,"SuperSuperGun",100,20);
+            
+            displayProduct()
+        
+            calculateTotalValue()
+            
+            removeProduct();
+
+            console.log(inventory);
+
+        </script>
+    </body>
+</html>
